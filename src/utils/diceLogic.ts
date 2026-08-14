@@ -5,13 +5,13 @@ export const INITIAL_COMPLEX_STATES: ComplexDiceStates = {
     counts: {},
     blockedQueue: [],
     maxBlocked: 5,
-    triggers: [1, 2, 9, 10],
+    triggers: [1, 2, 5, 6, 9, 10],
   },
   d20: {
     counts: {},
     blockedQueue: [],
     maxBlocked: 10,
-    triggers: [1, 2, 19, 20],
+    triggers: [1, 2, 10, 11, 19, 20],
   },
   d100: {
     counts: {},
@@ -19,6 +19,7 @@ export const INITIAL_COMPLEX_STATES: ComplexDiceStates = {
     maxBlocked: 50,
     triggers: [
       1, 2, 3, 4, 5,
+      50, 51,
       95, 96, 97, 98, 99, 100
     ],
   },

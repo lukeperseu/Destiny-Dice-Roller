@@ -51,9 +51,9 @@ export const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose }) => {
                 Ao rolar d10, d20 ou d100, 4 dados idênticos são sorteados internamente. O 4º dado atua como regulador de probabilidade para extremos:
               </p>
               <ul className="list-disc list-inside text-slate-400 space-y-1 pl-2">
-                <li><strong className="text-slate-200">d20:</strong> Se o 4º dado cair em <code className="text-rose-300">1, 2, 19 ou 20</code>, este resultado é retornado.</li>
-                <li><strong className="text-slate-200">d10:</strong> Se o 4º dado cair em <code className="text-rose-300">1, 2, 9 ou 10</code>, este resultado é retornado.</li>
-                <li><strong className="text-slate-200">d100:</strong> Se o 4º dado cair de <code className="text-rose-300">1 a 5</code> ou de <code className="text-rose-300">95 a 100</code>, este resultado é retornado.</li>
+                <li><strong className="text-slate-200">d20:</strong> Se o 4º dado cair em <code className="text-rose-300">1, 2, 10, 11, 19 ou 20</code>, este resultado é retornado.</li>
+                <li><strong className="text-slate-200">d10:</strong> Se o 4º dado cair em <code className="text-rose-300">1, 2, 5, 6, 9 ou 10</code>, este resultado é retornado.</li>
+                <li><strong className="text-slate-200">d100:</strong> Se o 4º dado cair de <code className="text-rose-300">1 a 5</code>, <code className="text-rose-300">50, 51</code> ou de <code className="text-rose-300">95 a 100</code>, este resultado é retornado.</li>
                 <li><em className="text-amber-400/90 font-medium">Nota:</em> Estes números de gatilho nunca entram na fila de bloqueios nem são bloqueados.</li>
               </ul>
             </div>
