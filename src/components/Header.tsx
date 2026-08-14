@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
         <div>
           <h1 className="font-extrabold text-slate-100 tracking-wide text-base sm:text-lg flex items-center gap-2">
-            RPG Secret Dice
+            RPG Destiny Dice Roller
             <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">
               Mechanics
             </span>
