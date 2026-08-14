@@ -7,6 +7,11 @@ export interface RollLog {
   diceType: DiceType;
   result: number;
   timestamp: number;
+  // Player attribution
+  playerName?: string;
+  playerPhoto?: string;
+  playerUid?: string;
+  gmUid?: string;
   // Secret metadata (visible in GM Inspector)
   isComplex?: boolean;
   secretDice?: {

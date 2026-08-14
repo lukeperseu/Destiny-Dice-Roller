@@ -27,7 +27,9 @@ export const TopStatsBar: React.FC<TopStatsBarProps> = ({
       <div className="flex items-center gap-1.5 overflow-x-auto custom-scrollbar no-scrollbar py-0.5 text-xs">
         {DICE_ORDER.map(diceType => {
           const logs = historyData[diceType] || [];
-          const lastResult = logs.length > 0 ? logs[logs.length - 1].result : '-';
+          const lastLog = logs.length > 0 ? logs[logs.length - 1] : null;
+          const lastResult = lastLog ? lastLog.result : '-';
+          const lastPlayer = lastLog?.playerName ? lastLog.playerName.split(' ')[0] : null;
           const isD100 = diceType === 'd100';
           const metricVal = logs.length > 0
             ? (isD100 ? calculateMedian(logs) : calculateAverage(logs)).toFixed(1)
@@ -42,6 +44,11 @@ export const TopStatsBar: React.FC<TopStatsBarProps> = ({
             >
               <span className="font-bold text-[#ff3b5c]">{diceType}:</span>
               <span className="text-white font-bold">{lastResult}</span>
+              {lastPlayer && (
+                <span className="text-[9px] text-cyan-300 font-sans max-w-[50px] truncate">
+                  ({lastPlayer})
+                </span>
+              )}
               <span className="text-[10px] text-[#00e676]">({metricVal})</span>
             </button>
           );

@@ -95,10 +95,9 @@ export const SidebarLogs: React.FC<SidebarLogsProps> = ({
 
             const isExpanded = expandedDie === diceType;
 
-            // History numbers string separated by commas (like in screenshot)
-            const results = logs.map(l => l.result);
-            const historyString = results.length > 0
-              ? results.join(', ')
+            // History numbers string with player names if available
+            const historyString = logs.length > 0
+              ? logs.map(l => l.playerName ? `${l.result} (${l.playerName.split(' ')[0]})` : `${l.result}`).join(', ')
               : 'Nenhuma rolagem';
 
             return (
@@ -123,7 +122,7 @@ export const SidebarLogs: React.FC<SidebarLogsProps> = ({
                     </div>
                   </div>
 
-                  {/* Comma separated history list as shown in screenshot */}
+                  {/* Comma separated history list */}
                   <div className="text-[11px] font-mono text-slate-400 truncate opacity-80">
                     {historyString}
                   </div>
@@ -165,26 +164,41 @@ export const SidebarLogs: React.FC<SidebarLogsProps> = ({
                               }}
                               className="p-1.5 rounded bg-[#1a2038] hover:bg-[#232b4a] border border-[#2d375e] flex items-center justify-between text-xs cursor-pointer transition-all"
                             >
-                              <div className="flex items-center gap-2">
-                                <span className="text-[10px] text-slate-500 font-mono">
+                              <div className="flex items-center gap-2 min-w-0">
+                                <span className="text-[10px] text-slate-500 font-mono shrink-0">
                                   #{logs.length - index}
                                 </span>
-                                <span className="font-mono font-bold text-white text-sm">
+                                <span className="font-mono font-bold text-white text-sm shrink-0">
                                   {log.result}
                                 </span>
+
+                                {log.playerName && (
+                                  <span className="text-[10px] bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 px-1.5 py-0.5 rounded font-medium flex items-center gap-1 max-w-[110px] truncate shrink-0">
+                                    {log.playerPhoto && (
+                                      <img
+                                        src={log.playerPhoto}
+                                        alt={log.playerName}
+                                        className="w-3.5 h-3.5 rounded-full object-cover shrink-0"
+                                        referrerPolicy="no-referrer"
+                                      />
+                                    )}
+                                    <span className="truncate">{log.playerName.split(' ')[0]}</span>
+                                  </span>
+                                )}
+
                                 {log.isTriggerResult && (
-                                  <span className="text-[9px] bg-[#ff3b5c]/20 text-[#ff3b5c] border border-[#ff3b5c]/40 px-1 rounded">
+                                  <span className="text-[9px] bg-[#ff3b5c]/20 text-[#ff3b5c] border border-[#ff3b5c]/40 px-1 rounded shrink-0">
                                     4º Dado
                                   </span>
                                 )}
                                 {log.isInverted && (
-                                  <span className="text-[9px] bg-purple-500/20 text-purple-300 border border-purple-500/40 px-1 rounded">
+                                  <span className="text-[9px] bg-purple-500/20 text-purple-300 border border-purple-500/40 px-1 rounded shrink-0">
                                     Invertido
                                   </span>
                                 )}
                               </div>
 
-                              <span className="text-[10px] text-slate-400 font-mono">
+                              <span className="text-[10px] text-slate-400 font-mono shrink-0">
                                 {new Date(log.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                               </span>
                             </div>

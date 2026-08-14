@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "users": {
+      "title": "Users",
+      "description": "Perfis de usuários (Mestres e Jogadores)",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["gm", "player"] },
+        "gmUid": { "type": "string" },
+        "gmDisplayName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "role"]
+    },
+    "rolls": {
+      "title": "Rolls",
+      "description": "Histórico de rolagens de dados por mesa do Mestre",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "gmUid": { "type": "string" },
+        "diceType": { "type": "string" },
+        "result": { "type": "number" },
+        "timestamp": { "type": "number" },
+        "playerName": { "type": "string" },
+        "playerPhoto": { "type": "string" },
+        "playerUid": { "type": "string" },
+        "isTriggerResult": { "type": "boolean" },
+        "isInverted": { "type": "boolean" },
+        "isComplex": { "type": "boolean" }
+      },
+      "required": ["id", "gmUid", "diceType", "result", "timestamp", "playerUid"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "Coleção de perfis de usuários"
+    },
+    "/rolls/{rollId}": {
+      "schema": "rolls",
+      "description": "Coleção de rolagens de dados compartilhadas"
+    }
+  }
+}

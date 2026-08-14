@@ -141,6 +141,20 @@ export const DiceRoller: React.FC<DiceRollerProps> = ({
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center">
+              {lastLog?.playerName && (
+                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-2">
+                  {lastLog.playerPhoto && (
+                    <img
+                      src={lastLog.playerPhoto}
+                      alt={lastLog.playerName}
+                      className="w-4 h-4 rounded-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  )}
+                  <span>Rolado por {lastLog.playerName}</span>
+                </div>
+              )}
+
               <span className="text-[120px] sm:text-[170px] font-extrabold font-sans leading-none text-white tracking-tight drop-shadow-[0_0_40px_rgba(255,59,92,0.85)]">
                 {currentResultWithModifier !== null ? currentResultWithModifier : '?'}
               </span>
