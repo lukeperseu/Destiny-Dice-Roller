@@ -1,0 +1,6 @@
+{
+  "name": "RPG Secret Dice Roller",
+  "description": "Aplicativo de rolagem de dados para RPG de mesa com mecânicas secretas de peso, bloqueio e painel de estatísticas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
